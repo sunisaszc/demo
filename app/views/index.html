@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SNMP - Router</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+  <nav class="navbar navbar-expand-lg bg-secondary">
+  <a class="btn btn-danger" href="/">All Day All Night</a>&nbsp;
+  <a class="btn btn-success" href="/wiviz">Wiviz</a>
+  </nav>
+<div class="card jumbotron ">
+  	<h1 class="text-center display-3"><%= title %></h1>
+    <p>Update Time : <span class="badge badge-warning"><%= time %></span></p>
+    <div class="progress">
+  		<div class="progress-bar bg-dark" style="width:100%"></div>
+	</div>
+    <p>
+    <table class="table table-hover table-bordered">
+    	<thead>
+        	<tr class="table-danger text-dark">
+    	        <th>Date</th>
+                <th>Time</th>
+                <th>Mac</th>
+                <th>Noise</th>
+                <th>Snr</th>
+                <th>Rssi</th>
+             </tr>
+  	 	</thead>
+           <% data.forEach(function(dataOne) { %>
+                <tr class="table-info">
+                    <td>
+                        <%= dataOne.date %>
+                    </td>
+                    <td>
+                        <%= dataOne.time %>
+                    </td>
+                    <td>
+                        <a href="/mac/<%= dataOne.mac %>"><%= dataOne.mac %></a>
+                    </td>
+                    <td>
+                        <%= dataOne.noise %>
+                    </td>
+                    <td>
+                        <%= dataOne.snr %>
+                    </td>
+                    <td>
+                        <%= dataOne.rssi %>
+                    </td>
+                </tr>
+                <% }); %>
+     </table>
+</div>
+</div>
+</body>
+</html>
